@@ -41,7 +41,7 @@ Com o Python e as bibliotecas instaladas, siga estas etapas para executar a apli
 
     python main.py
 
-    (Caso utilize uma versão específica do Python instalada separadamente, como a 3.10, você também pode iniciar com o comando: py -3.10 main.py)
+    
 
 Como Utilizar a Interface
 
@@ -57,6 +57,5 @@ O programa foi desenhado para ser autoexplicativo:
 
     Baixar: Clique em "Download Midia" para iniciar o processo. Uma janela de aviso confirmará o término do download.
 
-Desenvolvedor
 
 Este projeto foi idealizado e desenvolvido por DarlingSz.
