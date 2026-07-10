@@ -2,6 +2,10 @@
 
 Uma ferramenta desktop desenvolvida em Python para baixar vídeos, extrair áudios em alta qualidade (MP3) e salvar capas (thumbnails) de vídeos do YouTube através de uma interface gráfica minimalista e integrada.
 
+<p align="center">
+  <img src="app.png" alt="Interface do Aplicativo" width="600">
+</p>
+
 ---
 
 ## Pré-requisitos
