@@ -121,7 +121,7 @@ class YoutubeDownloaderPremium:
         self.entry_url.pack(pady=10, padx=40)
         self.entry_url.bind("<KeyRelease>", self.agendar_busca_info)
         
-        # --- BLOCÓ DE INFÓRMAÇÕES E PREVIEW ---
+        # --- BLOCO DE INFORMAÇÕES E PREVIEW ---
         self.frame_info = ctk.CTkFrame(self.main_win, fg_color=COR_CARD_GRAFITE, corner_radius=12)
         self.frame_info.pack(pady=10, fill="both", expand=True, padx=40)
         
@@ -270,10 +270,26 @@ class YoutubeDownloaderPremium:
     def executar_download_youtube(self):
         url = self.entry_url.get().strip()
         formato = self.var_formato_dl.get()
+        
+        # Opções base configuradas e atualizadas para mitigar o erro HTTP 403 Forbidden
         base_opts = {
             'outtmpl': os.path.join(self.pasta_destino, '%(title)s.%(ext)s'),
-            'extractor_args': {'youtube': {'player_client': ['web', 'default']}}
+            'nocheckcertificate': True,
+            'rm_cached_dir': True,  # Força a limpeza automática de caches corrompidos do YouTube
+            'extractor_args': {
+                'youtube': {
+                    'player_client': ['web', 'default'],
+                    'skip': ['dash', 'hls']
+                }
+            },
+            'http_headers': {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Sec-Fetch-Mode': 'navigate'
+            }
         }
+        
         if formato == "mp3":
             base_opts.update({
                 'format': 'bestaudio/best',
